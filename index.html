@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dansk Bodegatur</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background-color: #1a1209;
+      color: #f0e6cc;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      background-image: url('https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 5, 0, 0.45) 0%,
+        rgba(10, 5, 0, 0.70) 70%,
+        rgba(10, 5, 0, 0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .flag {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: 0.04em;
+      color: #f5d77e;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.8);
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      margin-top: 1rem;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: #e0c98a;
+      font-style: italic;
+      letter-spacing: 0.08em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      color: #c9a84c;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .intro-section p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #d4c09a;
+    }
+
+    .intro-section p strong {
+      color: #f5d77e;
+    }
+
+    .divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #c9a84c, #8b5e1a);
+      border-radius: 2px;
+      margin: 2rem auto;
+    }
+
+    /* ── STOPS HEADING ── */
+    .stops-heading {
+      text-align: center;
+      padding: 1rem 1.5rem 2rem;
+    }
+
+    .stops-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #f5d77e;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── STOPS GRID ── */
+    .stops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .stop-card {
+      background: linear-gradient(135deg, #2a1a08 0%, #1e1206 100%);
+      border: 1px solid #5a3e1b;
+      border-radius: 12px;
+      padding: 1.6rem 1.8rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stop-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #c9a84c, #8b5e1a);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .stop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .stop-number {
+      font-size: 0.78rem;
+      color: #c9a84c;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .stop-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #f5d77e;
+      margin-bottom: 0.8rem;
+    }
+
+    .stop-card p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #c8b48a;
+    }
+
+    /* ── SIGHTSEEING CARD (special) ── */
+    .stop-card.sightseeing {
+      border-color: #3d5a3e;
+      background: linear-gradient(135deg, #112211 0%, #0c1a0c 100%);
+    }
+
+    .stop-card.sightseeing::before {
+      background: linear-gradient(to bottom, #5aad5e, #2d6b30);
+    }
+
+    .stop-card.sightseeing h3 {
+      color: #8ee08e;
+    }
+
+    .stop-card.sightseeing .stop-number {
+      color: #5aad5e;
+    }
+
+    /* ── OUTRO ── */
+    .outro {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #c8b48a;
+    }
+
+    .outro strong {
+      color: #f5d77e;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0902;
+      border-top: 1px solid #3a2a10;
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #f5d77e;
+      display: block;
+    }
+
+    .stat .label {
+      font-size: 0.8rem;
+      color: #8a7050;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #6a5535;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CREDIT ── */
+    .credit {
+      border-top: 1px solid #2a1e0a;
+      padding-top: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .credit p {
+      font-size: 0.85rem;
+      color: #6a5535;
+      letter-spacing: 0.06em;
+    }
+
+    .credit span {
+      color: #c9a84c;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="flag">🇩🇰</div>
+      <h1>Dansk Bodegatur</h1>
+      <p class="hero-subtitle">Köpenhamn &nbsp;·&nbsp; Islands Brygge &nbsp;·&nbsp; Christianshavn</p>
+    </div>
+    <div class="scroll-hint">↓ Rulla ned ↓</div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <p>
+      Ta tåget till Danmark och hoppa av på <strong>Örestad</strong> (hållplatsen innan Hovedbanegården).
+      Här tar du metron — om du köper en tur och retur-biljett ingår metron i biljettpriset.
+      Denna biljett kallas för <strong>24-timmarsbiljett</strong> av Skånetrafiken för att de vill att
+      allt ska vara så ologiskt och förvirrande som möjligt.
+    </p>
+    <p style="margin-top:1rem;">
+      Du åker <strong>metrolinje M1</strong> mot Vanløse station och hoppar av på <strong>Islands Brygge</strong>.
+    </p>
+    <div class="divider"></div>
+  </section>
+
+  <!-- STOPS -->
+  <section class="stops-heading">
+    <h2>Turens stopp</h2>
+  </section>
+
+  <div class="stops-grid">
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 1</div>
+      <h3>🍺 Artillericaféen</h3>
+      <p>Från Islands Brygges metrostation går du raka vägen hit. Tyvärr har de tagit bort möjligheten att röka inomhus, men ölen är kall och hygget högt.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 2</div>
+      <h3>🌿 Parkhäng i Islands Brygge</h3>
+      <p>Ta Njalsgade ned mot vattnet. Är det fint väder — passa på att handla hos SuperBrugsen på vägen: ett par smörrebröd från delikatessdisken och några kalla öl. Sätt dig i parken. Svårslaget vad gäller ekonomi, stil och klass.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 3</div>
+      <h3>🚬 Café Haraldsborg</h3>
+      <p>När du kommit ned till Islands Brygge (gatan) tar du till höger. Här får man röka och hygget brukar vara glatt och stimmigt.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 4</div>
+      <h3>🐻‍❄️ Isbjørnen</h3>
+      <p>Fortsätter du norrut på Islands Brygge (gatan) stöter du snart på denna. Omsjungen i bland annat "Gråt vid min grav". En helt vanlig bodega på en helt vanlig dansk gata.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 5</div>
+      <h3>🌉 Café Langebro</h3>
+      <p>Vidare norrut. Bron utanför är den som Gasolin' sjunger om i låten med samma namn. En pub i två våningar med lite fler typer av öl. Bra om man behöver vila benen — annars kan man med fördel gå vidare.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 6</div>
+      <h3>💎 Café Rabes Have</h3>
+      <p>Tyvärr har jag inte lyckats komma förbi denna pärla, men eftersom det var Cornelis stamhak när han bodde i Köpenhamn är det svårt att se att det inte skulle vara underbart.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 7</div>
+      <h3>⚓ Kanal Bodega</h3>
+      <p>Turen går vidare längs Overgaden Oven Vandet. Uteservering längs kanalen — kall bajer och Gammel Dansk rekommenderas. På lilla torget Christianshavns Torv finns också en metrostation om man tröttnat på livskvalitet.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 8</div>
+      <h3>🎸 Fingerbøllet</h3>
+      <p>En bodega med en scen. Jag har aldrig sett ett band uppträda, men förutsätter att det endast är Peter Belli-coverband som tillåts spela.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 9</div>
+      <h3>🗼 Eiffel Bar</h3>
+      <p>Längre upp på Wildersgade. Var inte orolig — det är väldigt lite Frankrike och väldigt mycket Köpenhamn. Och luras inte av ölen med egna etiketter: det är samma gamla pilsner som överallt annars.</p>
+    </div>
+
+    <div class="stop-card sightseeing">
+      <div class="stop-number">Sightseeing</div>
+      <h3>🏛️ Motståndshistoria</h3>
+      <p>Bara runt hörnet bildades <strong>Holger Danske</strong> — den danska motståndsrörelsen mot den nazistiska ockupationen. Adressen är <strong>Overgaden Neden Vandet 51B</strong> och det sitter en stilig plakett på huset.</p>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-number">Stopp 10</div>
+      <h3>🎵 Café Starkodder</h3>
+      <p>Efter den välbehövliga historiska pausen passar det med en öl. Bodegan ligger på samma gata. Trevligt ställe — bartendern spolar förbi dina låtar på jukeboxen om du önskar något inspelat efter '63.</p>
+    </div>
+
+  </div>
+
+  <!-- OUTRO -->
+  <div class="outro">
+    <p>
+      Om man nu har fått nog är man tillbaka på <strong>Christianshavns Torv</strong> och kan ta
+      <strong>metrolinje M2</strong> mot Kastrup för att byta till tåg hem. Om man däremot vill ha en
+      liten, liten, <em>liten</em> öl till — finns ju alltid <strong>Café Falken</strong> på Prinsessegade i närheten.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-stats">
+      <div class="stat">
+        <span class="value">10</span>
+        <span class="label">Stopp</span>
+      </div>
+      <div class="stat">
+        <span class="value">2,5 km</span>
+        <span class="label">Promenad</span>
+      </div>
+      <div class="stat">
+        <span class="value">🇩🇰</span>
+        <span class="label">Köpenhamn</span>
+      </div>
+    </div>
+    <p class="footer-note">Skål! &nbsp;·&nbsp; Prosit! &nbsp;·&nbsp; Cheers!</p>
+
+    <!-- CREDIT -->
+    <div class="credit">
+      <p>Tur skapad och kurerad av &nbsp;<span>Hjelle</span></p>
+      <p style="margin-top:0.4rem;">— Tack för vägledningen genom Köpenhamns finaste bodegor 🍺</p>
+    </div>
+  </footer>
+
+</body>
+</html>
