@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dansk Bodegatur</title>
-  <link rel="icon" type="images/jpg" href="flag.png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -223,6 +222,43 @@
       color: #f5d77e;
     }
 
+    /* ── MAP ── */
+    .map-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .map-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #f5d77e;
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .map-card {
+      background: linear-gradient(135deg, #2a1a08 0%, #1e1206 100%);
+      border: 1px solid #5a3e1b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 500px;
+      display: block;
+      border: 0;
+    }
+
+    @media (max-width: 640px) {
+      .map-card iframe {
+        height: 350px;
+      }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #0d0902;
@@ -291,7 +327,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <div class="flag">🇩🇰</div>
+      <div class="flag">
+        <img src="https://flagcdn.com/w80/dk.png" alt="Danmark" style="height:3.5rem; vertical-align:middle;">
+      </div>
       <h1>Dansk Bodegatur</h1>
       <p class="hero-subtitle">Köpenhamn &nbsp;·&nbsp; Islands Brygge &nbsp;·&nbsp; Christianshavn</p>
     </div>
@@ -396,6 +434,19 @@
     </p>
   </div>
 
+  <!-- MAP -->
+  <section class="map-section">
+    <h2>Karta över turen</h2>
+    <div class="map-card">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d7568.3395245109905!2d12.575371121079915!3d55.67019502796886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x46525343d602715f%3A0x34693892511d07e7!2sIslands%20Brygge%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.6635558!2d12.5852744!4m5!1s0x465253419e9cb3d7%3A0x151553b193ba86b4!2sArtilleri%20Cafeen%2C%20Svend%20Aukens%20Pl.%201%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.664466999999995!2d12.583884999999999!4m5!1s0x4652536a75c9cf13%3A0x221b7f3ee0184264!2sSuperBrugsen%20Islands%20Brygge%2C%20Njalsgade%2027%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.665721999999995!2d12.580919!4m5!1s0x4652536afc5bd899%3A0x1a18594623c5981a!2sCafe%20Haraldsborg%2C%20Islands%20Brygge%2015%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.667559399999995!2d12.577957399999999!4m5!1s0x4652536afb37aeb3%3A0xc3043dda3769ec7a!2sThe%20Polar%20Bear%2C%20Reykjaviksgade%201%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.6677641!2d12.5785389!4m5!1s0x4652536ace19326d%3A0x471ca783bc6d8de0!2sCaf%C3%A9%20Langebro%2C%20Islands%20Brygge%201B%2C%202300%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.669152999999994!2d12.580058!4m5!1s0x4652533f90d82a3f%3A0x137155a02ce51f8d!2sCafe%20Rabes%20Have%2C%20Langebrogade%208%2C%201411%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.6701529!2d12.5861693!4m5!1s0x4652533eddabaa4f%3A0x9201d02a899064a6!2sKanal%20Bodega%2C%20Overgaden%20Oven%20Vandet%2036%2C%201415%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.672007699999995!2d12.590598!4m5!1s0x4652533e99f7a23f%3A0x8af0a795248bf579!2sFingerb%C3%B8llet%2C%20Wildersgade%2039%2C%201408%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.673649999999995!2d12.5906667!4m5!1s0x4652533edabd88cd%3A0x34c2f0b3c2bf1d88!2sChristianshavn%2C%201400%20K%C3%B8benhavn%2C%20Danmark!3m2!1d55.6722701!2d12.5911592!5e0!3m2!1ssv!2sse!4v1782286201932!5m2!1ssv!2sse"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-stats">
@@ -408,7 +459,9 @@
         <span class="label">Promenad</span>
       </div>
       <div class="stat">
-        <span class="value">🇩🇰</span>
+        <span class="value">
+          <img src="https://flagcdn.com/w40/dk.png" alt="Danmark" style="height:2.2rem; vertical-align:middle;">
+        </span>
         <span class="label">Köpenhamn</span>
       </div>
     </div>
